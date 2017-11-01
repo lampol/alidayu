@@ -3,13 +3,52 @@ require_once 'vendor/autoload.php';
 
 use lampol\Alidayu;
 
+use Aliyun\SmsDemo;
+
+
+//set_time_limit(0);
+//header('Content-Type: text/plain; charset=utf-8');
+$response = SmsDemo::sendSms(
+    "付叶慧", // 短信签名
+    "SMS_107930036", // 短信模板编号
+    "15954891593", // 短信接收者
+    Array(  // 短信模板中字段的值
+        "code"=>"12345",
+    )
+);
+echo "发送短信(sendSms)接口返回的结果:\n";
+print_r($response);
+
+
+
+
+exit;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //new Alidayu($config);
 
 $config = [
-	'key'      =>'24677956',
-	'secret'   =>'6e240eea235786124dffa54f019d66d4',
-	'signName'  =>'短信签名',
-	'template' =>'短信模板ID'
+	'key'      =>'LTAIpQtHkQsHxdUE',
+	'secret'   =>'sTi0GqCKe5cSJXZCvXMITYibnxOfe5',
+	'signName'  =>'付叶慧',
+	'template' =>'SMS_107930036'
 ];
 
 //key 24644943
