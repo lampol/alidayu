@@ -28,7 +28,7 @@ class SmsDemo
      *
      * @return DefaultAcsClient
      */
-    public static function getAcsClient() {
+    public static function getAcsClient($key,$secret) {
         //产品名称:云通信流量服务API产品,开发者无需替换
         $product = "Dysmsapi";
 
@@ -36,9 +36,9 @@ class SmsDemo
         $domain = "dysmsapi.aliyuncs.com";
 
         // TODO 此处需要替换成开发者自己的AK (https://ak-console.aliyun.com/)
-        $accessKeyId = "LTAIpQtHkQsHxdUE"; // AccessKeyId
+        $accessKeyId = $key; // AccessKeyId
 
-        $accessKeySecret = "sTi0GqCKe5cSJXZCvXMITYibnxOfe5"; // AccessKeySecret
+        $accessKeySecret = $secret; // AccessKeySecret
 
 
         // 暂时不支持多Region
@@ -79,7 +79,7 @@ class SmsDemo
      * @param string|null $outId [optional] 选填, 发送短信流水号 (e.g. 1234)
      * @return stdClass
      */
-    public static function sendSms($signName, $templateCode, $phoneNumbers, $templateParam = null, $outId = null) {
+    public static function sendSms($signName, $templateCode, $phoneNumbers, $key,$secret,$templateParam = null, $outId = null) {
 
         // 初始化SendSmsRequest实例用于设置发送短信的参数
         $request = new SendSmsRequest();
@@ -104,7 +104,7 @@ class SmsDemo
         }
 
         // 发起访问请求
-        $acsResponse = static::getAcsClient()->getAcsResponse($request);
+        $acsResponse = static::getAcsClient($key,$secret)->getAcsResponse($request);
 
         // 打印请求结果
         // var_dump($acsResponse);

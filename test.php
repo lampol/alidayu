@@ -9,9 +9,11 @@ use Aliyun\SmsDemo;
 //set_time_limit(0);
 //header('Content-Type: text/plain; charset=utf-8');
 $response = SmsDemo::sendSms(
-    "付叶慧", // 短信签名
+    "短信签名", // 短信签名
     "SMS_107930036", // 短信模板编号
-    "15954891593", // 短信接收者
+    "短信接收者", // 短信接收者
+    "LTAIpQtHkUE", //key
+    "sTi0GSZCvXMITYibnxOfe5", //secret
     Array(  // 短信模板中字段的值
         "code"=>"12345",
     )
