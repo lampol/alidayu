@@ -7,16 +7,16 @@ use lampol\Alidayu;
 //new Alidayu($config);
 
 $config = [
-        'key'      =>'24677943',
-        'secret'   =>'6e240eea085786124edfa54f019d66d4',
-        'signName'  =>'刘波',
-        'template' =>'SMS_107900024'
+        'key'      =>'24623943',
+        'secret'   =>'6e240wwa085723124edfa54f019d66d4',
+        'signName'  =>'短信签名',
+        'template' =>'短信模板ID'
 ];
 
-//key 24677943
-//secret 6e240eea08578we2423fa54f019d66d4
+//key 24655943
+//secret 6e240wwa08578we2434fa54f019d66d4
 //signName 你的短信签名
-//template SMS_107900024
+//template SMS_107989024
 
 
 $ali = new Alidayu($config);
@@ -25,7 +25,7 @@ $ali = new Alidayu($config);
 //$mobile 接收短信手机号
 //模板里面的参数 "{code:'123456789'}"
 $param  = "{code:'123456789'}";
-$mobile = '15588608866';
+$mobile = '15588888888';
 
 $res = $ali->sendMobile($mobile,$param);
 
