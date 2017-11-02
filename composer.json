@@ -15,8 +15,8 @@
     },
     "autoload":{
 	"psr-4":{
-		"lampol\\":"src",
-		"Aliyun\\": "lib/"
+		"Alidayu\\":"src/alidayu/",
+		"Aliyun\\":"src/aliyun/"
 		}
     }
 }

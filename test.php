@@ -1,72 +1,63 @@
 <?php
 require_once 'vendor/autoload.php';
 
-use lampol\Alidayu;
+//两个平台的 Alidayu是原来的平台
+use Alidayu\Alidayu;
 
-use Aliyun\SmsDemo;
-
-
-//set_time_limit(0);
-//header('Content-Type: text/plain; charset=utf-8');
-$response = SmsDemo::sendSms(
-    "短信签名", // 短信签名
-    "SMS_107930036", // 短信模板编号
-    "短信接收者", // 短信接收者
-    "LTAIpQtHkUE", //key
-    "sTi0GSZCvXMITYibnxOfe5", //secret
-    Array(  // 短信模板中字段的值
-        "code"=>"12345",
-    )
-);
-echo "发送短信(sendSms)接口返回的结果:\n";
-print_r($response);
+//这个是现在在阿里云后台短信发送的
+use Aliyun\Aliyun;
 
 
+//阿里云的平台使用
 
+//$signName=''; //短信签名
+//$template=''; //短息模板
+//$mobile='';    //接受手机号码
+//$key='';  //app_key
+//$secret=''; //app_secret
+//$param=['code'=>'123456789'];  //参数
+//$date='20171102';               //发送日期
+//$currentPage                   //当前页
+//$pageSize                      //页大小
+//
+//发送信息
+$response = Aliyun::sendMobileMes($signName,$template,$mobile,$key,$secret,$param);
+//查询发送的信息
+$response =Aliyun::queryMobileMes($mobile,$date,$key,$secret ,$pageSize = 10, $currentPage = 1, $bizId=null);
 
-exit;
-
-
-
+//$response 返回json数据格式
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-//new Alidayu($config);
-
+//阿里大于平台的使用
 $config = [
-	'key'      =>'LTAIpQtHkQsHxdUE',
-	'secret'   =>'sTi0GqCKe5cSJXZCvXMITYibnxOfe5',
-	'signName'  =>'付叶慧',
-	'template' =>'SMS_107930036'
+	'key'      =>'',
+	'secret'   =>''
 ];
-
-//key 24644943
-//secret 6e240wwa08578we2423fa54f019d66d4
-//signName 你的短信签名
-//template SMS_107934024
 
 
 $ali = new Alidayu($config);
 
-//sendMobile($mobile,$param);
-//$mobile 接收短信手机号
-//模板里面的参数 "{code:'123456789'}"
-$param  = "{code:'123456789'}";
-$mobile = '15588888888';
+//查询发送的信息
 
-$res = $ali->sendMobile($mobile,$param);
+//$mobile 查询手机号码
+//$date   发送日期 格式 20171102
+//$curPage  当前页
+//$size    页大小
+
+$res = $ali->queryMobileMes($mobile,$date,$curPage,$size);
+
+
+//发送信息
+
+//$mobile 接收短信手机号
+//$param 模板里面的参数 ['code'=>'123456'];
+//$signName 你的短信签名
+//$template SMS_107934024
+
+$res = $ali->sendMobileMes($mobile,$param,$signName,$template);
 
 var_dump($res);
+
+//$res 返回json数据格式
